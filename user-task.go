@@ -533,17 +533,3 @@ func (t *userTaskApi) DeleteIdentityLink(id string, query ReqIdentityLink) error
 
 	return nil
 }
-
-func (t *userTaskApi) UnlockUser(id string) error {
-	res, err := t.client.doPostJson(fmt.Sprintf("/user/%s/unlock", id),
-		nil, nil)
-	if err != nil {
-		return fmt.Errorf("can't post json: %w", err)
-	}
-
-	if res != nil {
-		res.Body.Close()
-	}
-
-	return nil
-}
